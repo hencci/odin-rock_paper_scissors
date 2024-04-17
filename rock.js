@@ -11,12 +11,25 @@ function getComputerChoice() {
 
 function playRound(playerSelection, computerSelection) {
     // your code here!
-    if(playerSelection == computerSelection){
+    
+    if(playerSelection.toUpperCase() == computerSelection){
         return "Draw!";
     }
+    else if (playerSelection.toUpperCase() == "ROCK") {
+        return (computerSelection == "PAPER")? "You lose! PAPER covers ROCK" : "You win! ROCK breaks SCISSORS"
+    }
+    else if (playerSelection.toUpperCase() == "PAPER") {
+        return (computerSelection == "SCISSIORS")? "You lose! SCISSORS cuts PAPER" : "You win! PAPER covers ROCK"
+    }
+    else if (playerSelection.toUpperCase() == "SCISSORS") {
+        return (computerSelection == "ROCK")? "You lose! ROCK breaks SCISSORS" : "You win! SCISSORS cuts PAPER"
+    }
+    
+}
 
-  }
-  let playerSelection
-  const computerSelection = getComputerChoice();
-  console.log(playRound(playerSelection, computerSelection));
+function playGame() {
+
+}
+
+let computerSelection = getComputerChoice();
   
