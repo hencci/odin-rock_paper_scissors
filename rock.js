@@ -1,3 +1,6 @@
+let computerSelection;
+let playerSelection;
+
 function getComputerChoice() {
     randNum = Math.floor(Math.random() * 3)+ 1;
         if (randNum == 1) {
@@ -24,12 +27,16 @@ function playRound(playerSelection, computerSelection) {
     else if (playerSelection.toUpperCase() == "SCISSORS") {
         return (computerSelection == "ROCK")? "You lose! ROCK breaks SCISSORS" : "You win! SCISSORS cuts PAPER"
     }
-    
 }
 
 function playGame() {
-
+    alert("Welcome to the game. There would be 5 rounds.")
+    for (let i = 1; i <= 5; i++) {
+        playerSelection = prompt(`Round ${i}! Rock, Papar or Scissors`);
+        computerSelection = getComputerChoice();
+        alert(playRound(playerSelection,computerSelection));
+    }
 }
 
-let computerSelection = getComputerChoice();
+playGame();
   
