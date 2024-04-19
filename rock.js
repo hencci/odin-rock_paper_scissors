@@ -58,6 +58,17 @@ function playGame() {
         computerSelection = getComputerChoice();
         alert(playRound(playerSelection,computerSelection));
     }
+
+    
+    if (playerScore > cpuScore) {
+        alert("Welldone! Youn won. Good game.");
+    } 
+    else if (playerScore < cpuScore) {
+        alert("OH NO! You lost");
+    }
+    else {
+        alert("It is a tie")
+    }
 }
 
 playGame();
