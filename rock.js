@@ -16,10 +16,11 @@ function getComputerChoice() {
 
 function playRound(playerSelection, computerSelection) {
     
-    if(playerSelection.toUpperCase() == computerSelection){
+    playerSelection = playerSelection.toUpperCase();
+    if(playerSelection == computerSelection){
         return `Oops! It is a draw. You selected same thing. SCORE: ${playerScore} - ${cpuScore}`;
     }
-    else if (playerSelection.toUpperCase() == "ROCK") {
+    else if (playerSelection == "ROCK") {
         if (computerSelection == "PAPER") {
             cpuScore += 1;
             return `You lose! PAPER covers ROCK.   SCORE: ${playerScore} - ${cpuScore}`;
@@ -29,7 +30,7 @@ function playRound(playerSelection, computerSelection) {
             return `You win! ROCK breaks SCISSORS.   SCORE: ${playerScore} - ${cpuScore}`;
         }
     }
-    else if (playerSelection.toUpperCase() == "PAPER") {
+    else if (playerSelection == "PAPER") {
         if (computerSelection == "SCISSORS") {
             cpuScore += 1;
             return `You lose! SCISSORS cuts PAPER.   SCORE: ${playerScore} - ${cpuScore}`;
@@ -39,7 +40,7 @@ function playRound(playerSelection, computerSelection) {
             return `You win! PAPER covers ROCK.   SCORE: ${playerScore} - ${cpuScore}`;
         }
     }
-    else if (playerSelection.toUpperCase() == "SCISSORS") {
+    else if (playerSelection== "SCISSORS") {
         if (computerSelection == "ROCK") {
             cpuScore += 1;
             return `You lose! ROCK breaks SCISSORS.   SCORE: ${playerScore} - ${cpuScore}`;
