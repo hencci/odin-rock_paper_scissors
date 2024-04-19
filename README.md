@@ -1,0 +1,1 @@
+This project is a 'ROCK, PAPER, SCISSORS' game. The play is between a user and computer. The game has five rounds, at the end of which the winner is alerted.
