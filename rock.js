@@ -1,51 +1,72 @@
 let computerSelection;
 let playerSelection;
-let playerScore = 0;
-let cpuScore = 0;
+let currentPlayerScore = 0;
+let currentCpuScore = 0;
+
+const rock = document.querySelector(".rock");
+const paper = document.querySelector(".paper");
+const scissors = document.querySelector(".scissors");
+const playerScore = document.querySelector(".playerScore");
+const cpuScore = document.querySelector(".cpuScore");
+const displayMessage = document.querySelector("#displayMessage");
+
+playerScore.textContent = currentPlayerScore;
+cpuScore.textContent = currentCpuScore;
+
+function updateScore() {
+    playerScore.textContent = currentPlayerScore;
+    cpuScore.textContent = currentCpuScore;
+}
+
+rock.addEventListener("click", (e)=> {
+    computerSelection = getComputerChoice();
+    playerSelection = e.target.getAttribute("class");
+    playRound(playerSelection, computerSelection);
+    playGame();
+});
 
 function getComputerChoice() {
     randNum = Math.floor(Math.random() * 3)+ 1;
         if (randNum == 1) {
-            return "ROCK";
+            return "rock";
           } else if (randNum == 2) {
-            return "PAPER";
+            return "paper";
           } else {
-            return "SCISSORS";
+            return "scissors";
           } 
     }
 
 function playRound(playerSelection, computerSelection) {
     
-    playerSelection = playerSelection.toUpperCase();
     if(playerSelection == computerSelection){
         return `Oops! It is a draw. You selected same thing. SCORE: ${playerScore} - ${cpuScore}`;
     }
-    else if (playerSelection == "ROCK") {
-        if (computerSelection == "PAPER") {
+    else if (playerSelection == "rock") {
+        if (computerSelection == "paper") {
             cpuScore += 1;
             return `You lose! PAPER covers ROCK.   SCORE: ${playerScore} - ${cpuScore}`;
         }
-        else if (computerSelection == "SCISSORS") {
+        else if (computerSelection == "scissors") {
             playerScore += 1;
             return `You win! ROCK breaks SCISSORS.   SCORE: ${playerScore} - ${cpuScore}`;
         }
     }
-    else if (playerSelection == "PAPER") {
-        if (computerSelection == "SCISSORS") {
+    else if (playerSelection == "paper") {
+        if (computerSelection == "scissors") {
             cpuScore += 1;
             return `You lose! SCISSORS cuts PAPER.   SCORE: ${playerScore} - ${cpuScore}`;
         }
-        else if (computerSelection == "ROCK") {
+        else if (computerSelection == "rock") {
             playerScore += 1;
             return `You win! PAPER covers ROCK.   SCORE: ${playerScore} - ${cpuScore}`;
         }
     }
-    else if (playerSelection== "SCISSORS") {
-        if (computerSelection == "ROCK") {
+    else if (playerSelection == "scissors") {
+        if (computerSelection == "rock") {
             cpuScore += 1;
             return `You lose! ROCK breaks SCISSORS.   SCORE: ${playerScore} - ${cpuScore}`;
         }
-        else if (computerSelection == "PAPER") {
+        else if (computerSelection == "paper") {
             playerScore += 1;
             return `You win! SCISSORS cuts PAPER.   SCORE: ${playerScore} - ${cpuScore}`;
         }
@@ -53,23 +74,16 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function playGame() {
-    alert("Welcome to the game. There would be 5 rounds. Please type either Rock, Paper or Scissors ONLY else the game will malfunction")
-    for (let i = 1; i <= 5; i++) {
-        playerSelection = prompt(`Round ${i}! Rock, Papar or Scissors`);
-        computerSelection = getComputerChoice();
-        alert(playRound(playerSelection,computerSelection));
-    }
-
-    
-    if (playerScore > cpuScore) {
-        alert("Welldone! Youn won. Good game.");
+    if (cpuScore === 5) {
+        displayMessage.textContent = "You lost to the computer!";
+        currentPlayerScore = 0;
+        currentCpuScore = 0;
+        updateScore();
     } 
-    else if (playerScore < cpuScore) {
-        alert("OH NO! You lost");
-    }
-    else {
-        alert("It is a tie")
+    else if (playerScore === 5) {
+        displayMessage.textContent = "Yon won! Victory at last";
+        currentPlayerScore = 0;
+        currentCpuScore = 0;
+        updateScore();
     }
 }
-
-playGame();
