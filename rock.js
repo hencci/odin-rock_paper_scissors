@@ -24,6 +24,18 @@ rock.addEventListener("click", (e)=> {
     playRound(playerSelection, computerSelection);
     playGame();
 });
+paper.addEventListener("click", (e)=> {
+    computerSelection = getComputerChoice();
+    playerSelection = e.target.getAttribute("class");
+    playRound(playerSelection, computerSelection);
+    playGame();
+});
+scissors.addEventListener("click", (e)=> {
+    computerSelection = getComputerChoice();
+    playerSelection = e.target.getAttribute("class");
+    playRound(playerSelection, computerSelection);
+    playGame();
+});
 
 function getComputerChoice() {
     randNum = Math.floor(Math.random() * 3)+ 1;
@@ -39,49 +51,62 @@ function getComputerChoice() {
 function playRound(playerSelection, computerSelection) {
     
     if(playerSelection == computerSelection){
-        return `Oops! It is a draw. You selected same thing. SCORE: ${playerScore} - ${cpuScore}`;
+        displayMessage.textContent = "It was a tie";
+        return;
     }
     else if (playerSelection == "rock") {
         if (computerSelection == "paper") {
-            cpuScore += 1;
-            return `You lose! PAPER covers ROCK.   SCORE: ${playerScore} - ${cpuScore}`;
+            currentCpuScore += 1;
+            updateScore();
+            displayMessage.textContent = "You lost! PAPER COVERS ROCK"
+            return;
         }
         else if (computerSelection == "scissors") {
-            playerScore += 1;
-            return `You win! ROCK breaks SCISSORS.   SCORE: ${playerScore} - ${cpuScore}`;
+            currentPlayerScore += 1;
+            updateScore();
+            displayMessage.textContent = "You win! ROCK breaks SCISSORS";
+            return;
         }
     }
     else if (playerSelection == "paper") {
         if (computerSelection == "scissors") {
-            cpuScore += 1;
-            return `You lose! SCISSORS cuts PAPER.   SCORE: ${playerScore} - ${cpuScore}`;
+            currentCpuScore += 1;
+            updateScore();
+            displayMessage.textContent = "You lose! SCISSORS cuts PAPER";
+            return;
         }
         else if (computerSelection == "rock") {
-            playerScore += 1;
-            return `You win! PAPER covers ROCK.   SCORE: ${playerScore} - ${cpuScore}`;
+            currentPlayerScore += 1;
+            updateScore();
+            displayMessage.textContent = "You win! PAPER covers ROCK.";
+            return;
         }
     }
     else if (playerSelection == "scissors") {
         if (computerSelection == "rock") {
-            cpuScore += 1;
-            return `You lose! ROCK breaks SCISSORS.   SCORE: ${playerScore} - ${cpuScore}`;
+            currentCpuScore += 1;
+            updateScore();
+            displayMessage.textContent = "You lose! ROCK breaks SCISSORS.";
+            return;
         }
         else if (computerSelection == "paper") {
-            playerScore += 1;
-            return `You win! SCISSORS cuts PAPER.   SCORE: ${playerScore} - ${cpuScore}`;
+            currentPlayerScore+= 1;
+            updateScore();
+            displayMessage.textContent = "You win! SCISSORS cuts PAPER.";
+            return;
         }
     }
 }
 
 function playGame() {
-    if (cpuScore === 5) {
-        displayMessage.textContent = "You lost to the computer!";
+    if (currentCpuScore === 5) {
+        displayMessage.textContent = "CPU sored 5. You lost to the computer!";
         currentPlayerScore = 0;
         currentCpuScore = 0;
         updateScore();
     } 
-    else if (playerScore === 5) {
-        displayMessage.textContent = "Yon won! Victory at last";
+    else if (currentPlayerScore === 5) {
+        displayMessage.textContent = "you scored 5. Yon won! Victory at last";
         currentPlayerScore = 0;
         currentCpuScore = 0;
         updateScore();
