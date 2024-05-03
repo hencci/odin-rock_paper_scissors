@@ -1,5 +1,7 @@
 html {
     background: url('./images/rock-paper-scissors\ 1500x860.jpg')no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 body {
@@ -8,5 +10,54 @@ body {
     justify-content: flex-start;
     align-items: center;
     background-color: rgba(255, 255, 255, 0.3);
-    background-attachment: fixed;
+}
+
+h1 {
+    letter-spacing: 20px;
+    text-align: center;
+}
+
+h2, .cpuScore, .playerScore {
+    color: red;
+}
+
+#weapons {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 100px;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 2%;
+}
+.rock, .paper, .scissors {
+    border: solid black 4px;
+    border-radius: 50%;
+    min-height: 300px;
+    flex-basis: 300px;
+    align-self: center;
+    font-weight: 900;
+    font-size: large;
+}
+.rock {
+    background: url('./images/rock.png') center;
+}
+.paper {
+    background: url('./images/paper.png') center;
+}
+.scissors {
+    background: url('./images/scissors.jpg') center;
+}
+
+.scoreCard {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 150px;
+    justify-content: center;
+    align-items: center;
+}
+
+.cpuScore, .playerScore {
+    color: red;
+    font-size: 50px;
 }
