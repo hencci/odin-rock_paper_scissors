@@ -1,0 +1,12 @@
+html {
+    background: url('./images/rock-paper-scissors\ 1500x860.jpg')no-repeat;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.3);
+    background-attachment: fixed;
+}
